@@ -52,7 +52,6 @@ Construir uma aplicação que permita aos usuários:
 * PostgreSQL
 * JDBC
 * pgAdmin
-* (Opcional: JavaFX / Swing para interface)
   
 ---
 
@@ -78,10 +77,8 @@ CREATE TABLE usuarios (
     cpf VARCHAR(14) UNIQUE NOT NULL,
     usuario VARCHAR(50) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    datanascimento DATE NOT NULL
 );
 ```
-
 ---
 
 ## ▶️ Como Executar
