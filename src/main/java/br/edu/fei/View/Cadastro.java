@@ -4,6 +4,14 @@
  */
 package br.edu.fei.View;
 
+import br.edu.fei.Controller.CadastroController;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author lucia
@@ -11,6 +19,7 @@ package br.edu.fei.View;
 public class Cadastro extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Cadastro.class.getName());
+    private CadastroController controller;
 
     /**
      * Creates new form Cadastro
@@ -38,7 +47,7 @@ public class Cadastro extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         TfSenha = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TfCpf = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +76,13 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel5.setText("CPF:");
 
+        try {
+            TfCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        TfCpf.addActionListener(this::TfCpfActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,8 +102,8 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TfSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                     .addComponent(TfNome)
-                    .addComponent(jTextField1)
-                    .addComponent(TfUsuario))
+                    .addComponent(TfUsuario)
+                    .addComponent(TfCpf))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(248, Short.MAX_VALUE)
@@ -105,8 +121,8 @@ public class Cadastro extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(TfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -147,13 +163,17 @@ public class Cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_TfUsuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //this.controller.inserir();
-        //this.controller.voltarLogin();
+       this.controller.cadastrar();
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TfSenhaActionPerformed
+
+    private void TfCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TfCpfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,7 +200,56 @@ public class Cadastro extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new Cadastro().setVisible(true));
     }
 
+    public static Logger getLogger() {
+        return logger;
+    }
+
+    public JTextField getTfCpf() {
+        return TfCpf;
+    }
+
+    public JTextField getTfNome() {
+        return TfNome;
+    }
+
+    public JPasswordField getTfSenha() {
+        return TfSenha;
+    }
+
+    public JTextField getTfUsuario() {
+        return TfUsuario;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField TfCpf;
     private javax.swing.JTextField TfNome;
     private javax.swing.JPasswordField TfSenha;
     private javax.swing.JTextField TfUsuario;
@@ -191,6 +260,8 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+public void setController(CadastroController controller) {
+    this.controller = controller;
+}
 }

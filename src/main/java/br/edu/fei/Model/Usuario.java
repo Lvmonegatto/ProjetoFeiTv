@@ -9,25 +9,16 @@ package br.edu.fei.Model;
  * @author lucia
  */
 public class Usuario {
-    private int id_usuario;
     private String nome;
     private String cpf;
     private String usuario;
     private String senha;
 
-    public Usuario() {
-    }
-
-    public Usuario(int id_usuario, String nome, String cpf, String usuario, String senha) {
-        this.id_usuario = id_usuario;
+    public Usuario(String nome, String cpf, String usuario, String senha) {
         this.nome = nome;
         this.cpf = cpf;
         this.usuario = usuario;
         this.senha = senha;
-    }
-
-    public int getId_usuario() {
-        return id_usuario;
     }
 
     public String getNome() {
@@ -44,10 +35,6 @@ public class Usuario {
 
     public String getSenha() {
         return senha;
-    }
-
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
     }
 
     public void setNome(String nome) {
