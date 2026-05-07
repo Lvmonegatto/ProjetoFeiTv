@@ -103,7 +103,6 @@ public class TelaPrincipalController {
 
         try {
             Conexao conexao = new Conexao();
-
             FilmeDAO dao = new FilmeDAO(conexao.getConnection());
             dao.curtir(idFilme);
             listarFilmes();
@@ -112,5 +111,26 @@ public class TelaPrincipalController {
             e.printStackTrace();
         }
     }
-    
+    public void descurtirFilme() {
+
+    int linhaSelecionada = view.getTabelaFilmes().getSelectedRow();
+
+    if(linhaSelecionada == -1) {
+        JOptionPane.showMessageDialog(null,"Selecione um filme!");
+        return;
+    }
+
+    int idFilme = (int)view.getTabelaFilmes().getValueAt(linhaSelecionada,0);
+
+    try {
+        Conexao conexao = new Conexao();
+        FilmeDAO dao = new FilmeDAO(conexao.getConnection());
+        dao.descurtir(idFilme);
+        listarFilmes();
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+}
 }

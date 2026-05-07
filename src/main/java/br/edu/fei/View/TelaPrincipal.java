@@ -76,6 +76,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jButton3.setText("Descurtir");
+        jButton3.addActionListener(this::jButton3ActionPerformed);
 
         jButton4.setText("Favoritar");
 
@@ -154,6 +155,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.controller.buscarFilme();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.controller.descurtirFilme();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
