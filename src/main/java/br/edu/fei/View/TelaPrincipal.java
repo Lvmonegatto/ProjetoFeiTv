@@ -53,6 +53,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         TabelaFilmes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,8 +148,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        this.controller.curtirFilme();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.controller.buscarFilme();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,6 +243,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 public void setController(TelaPrincipalController controller) {
     this.controller = controller;
-    controller.listarFilmes();
+    this.controller.listarFilmes();
 }
 }
