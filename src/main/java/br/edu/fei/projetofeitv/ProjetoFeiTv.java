@@ -6,8 +6,10 @@ package br.edu.fei.projetofeitv;
 
 import br.edu.fei.Controller.CadastroController;
 import br.edu.fei.Controller.LoginController;
+import br.edu.fei.Controller.TelaPrincipalController;
 import br.edu.fei.View.Cadastro;
 import br.edu.fei.View.Login;
+import br.edu.fei.View.TelaPrincipal;
 
 /**
  *
@@ -19,15 +21,14 @@ public class ProjetoFeiTv {
         Login login = new Login();
         Cadastro cadastro = new Cadastro();
 
-        LoginController loginController =
-                new LoginController(login, cadastro);
+        LoginController loginController = new LoginController(login, cadastro);
 
-        CadastroController cadastroController =
-                new CadastroController(cadastro, login);
+        CadastroController cadastroController = new CadastroController(cadastro, login);
 
         login.setController(loginController);
         cadastro.setController(cadastroController);
 
         login.setVisible(true);
+        
     }
 }

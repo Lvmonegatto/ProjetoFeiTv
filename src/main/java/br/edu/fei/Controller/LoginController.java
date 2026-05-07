@@ -13,7 +13,10 @@ import br.edu.fei.View.TelaPrincipal;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ *
+ * @author lucia
+ */
 public class LoginController {
 
     private Login view;
@@ -49,13 +52,15 @@ public class LoginController {
 
             if (rs.next()) {
 
-                TelaPrincipal telaPrincipal =
-                        new TelaPrincipal();
+                TelaPrincipal telaPrincipal = new TelaPrincipal();
+
+                TelaPrincipalController controller = new TelaPrincipalController(telaPrincipal);
+
+                telaPrincipal.setController(controller);
 
                 telaPrincipal.setVisible(true);
 
                 view.dispose();
-
             } else {
 
                 System.out.println("Usuário ou senha inválidos");

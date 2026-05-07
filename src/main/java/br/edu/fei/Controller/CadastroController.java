@@ -12,7 +12,10 @@ import br.edu.fei.View.Login;
 
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
+/**
+ *
+ * @author lucia
+ */
 public class CadastroController {
 
     private Cadastro view;
