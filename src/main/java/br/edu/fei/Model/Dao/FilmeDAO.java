@@ -63,12 +63,7 @@ public class FilmeDAO {
     }
     public ResultSet buscarDetalhesFilme(int idFilme) throws SQLException {
 
-    String sql =
-            """
-            SELECT *
-            FROM filmes
-            WHERE id_filme = ?
-            """;
+    String sql = "SELECT * FROM filmes WHERE id_filme = ?";
 
     PreparedStatement statement = conn.prepareStatement(sql);
 

@@ -6,6 +6,7 @@ package br.edu.fei.Controller;
 
 import br.edu.fei.Model.Dao.Conexao;
 import br.edu.fei.Model.Dao.UsuarioDAO;
+import br.edu.fei.Model.Sessao;
 import br.edu.fei.Model.Usuario;
 import br.edu.fei.View.Cadastro;
 import br.edu.fei.View.Login;
@@ -51,7 +52,8 @@ public class LoginController {
             ResultSet rs = dao.consultar(usuarioObj);
 
             if (rs.next()) {
-
+                Sessao.setIdUsuario(rs.getInt("id_usuario"));
+                
                 TelaPrincipal telaPrincipal = new TelaPrincipal();
 
                 TelaPrincipalController controller = new TelaPrincipalController(telaPrincipal);

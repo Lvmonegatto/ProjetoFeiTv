@@ -104,6 +104,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton3.addActionListener(this::jButton3ActionPerformed);
 
         jButton4.setText("Favoritar");
+        jButton4.addActionListener(this::jButton4ActionPerformed);
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -328,8 +329,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void TabelaFilmesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaFilmesMouseClicked
-        controller.carregarDetalhesFilme();
+        this.controller.carregarDetalhesFilme();
     }//GEN-LAST:event_TabelaFilmesMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.controller.favoritarFilme();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

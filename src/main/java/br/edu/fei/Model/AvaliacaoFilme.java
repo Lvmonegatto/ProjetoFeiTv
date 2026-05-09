@@ -8,20 +8,17 @@ package br.edu.fei.Model;
  *
  * @author lucia
  */
-public class Favorito {
-    private int idFavorito;
-
+public class AvaliacaoFilme {
     private int idUsuario;
 
     private int idFilme;
 
-    public Favorito(
-            int idUsuario,
-            int idFilme
-    ) {
+    private String tipo;
 
+    public AvaliacaoFilme(int idUsuario,int idFilme,String tipo) {
         this.idUsuario = idUsuario;
         this.idFilme = idFilme;
+        this.tipo = tipo;
     }
 
     public int getIdUsuario() {
@@ -31,5 +28,8 @@ public class Favorito {
     public int getIdFilme() {
         return idFilme;
     }
-}
 
+    public String getTipo() {
+        return tipo;
+    }
+}
