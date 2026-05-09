@@ -43,6 +43,7 @@ public class TelaPrincipalController {
                 };
                 tabela.addRow(linha);
             }
+            view.getTabelaFilmes().getColumnModel().getColumn(1).setPreferredWidth(220);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -84,6 +85,7 @@ public class TelaPrincipalController {
             }
 
             view.getTabelaFilmes().setModel(tabela);
+            view.getTabelaFilmes().getColumnModel().getColumn(1).setPreferredWidth(220);
 
         } catch (SQLException e) {
 
@@ -127,6 +129,86 @@ public class TelaPrincipalController {
         FilmeDAO dao = new FilmeDAO(conexao.getConnection());
         dao.descurtir(idFilme);
         listarFilmes();
+
+    } catch (SQLException e) {
+
+        e.printStackTrace();
+    }
+}
+    public void carregarDetalhesFilme() {
+
+    int linhaSelecionada =
+            view.getTabelaFilmes()
+                    .getSelectedRow();
+
+    if(linhaSelecionada == -1) {
+
+        return;
+    }
+
+    int idFilme = (int)
+            view.getTabelaFilmes()
+                    .getValueAt(
+                            linhaSelecionada,
+                            0
+                    );
+
+    try {
+
+        Conexao conexao =
+                new Conexao();
+
+        FilmeDAO dao =
+                new FilmeDAO(
+                        conexao.getConnection()
+                );
+
+        ResultSet rs =
+                dao.buscarDetalhesFilme(idFilme);
+
+        if(rs.next()) {
+
+            view.getTituloValor()
+                    .setText(
+                            rs.getString("titulo")
+                    );
+
+            view.getCategoriaValor()
+                    .setText(
+                            rs.getString("categoria")
+                    );
+
+            view.getDiretorValor()
+                    .setText(
+                            rs.getString("diretor")
+                    );
+
+            view.getAnoValor()
+                    .setText(
+                            String.valueOf(
+                                    rs.getInt("ano")
+                            )
+                    );
+
+            view.getDuracaoValor()
+                    .setText(
+                            rs.getString("duracao")
+                    );
+
+            view.getDataValor()
+                    .setText(
+                            String.valueOf(
+                                    rs.getDate(
+                                            "data_lancamento"
+                                    )
+                            )
+                    );
+
+            view.getTxtDescricao()
+                    .setText(
+                            rs.getString("descricao")
+                    );
+        }
 
     } catch (SQLException e) {
 

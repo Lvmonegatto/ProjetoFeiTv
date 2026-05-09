@@ -61,4 +61,19 @@ public class FilmeDAO {
 
         statement.execute();
     }
+    public ResultSet buscarDetalhesFilme(int idFilme) throws SQLException {
+
+    String sql =
+            """
+            SELECT *
+            FROM filmes
+            WHERE id_filme = ?
+            """;
+
+    PreparedStatement statement = conn.prepareStatement(sql);
+
+    statement.setInt(1, idFilme);
+
+    return statement.executeQuery();
+}
 }
