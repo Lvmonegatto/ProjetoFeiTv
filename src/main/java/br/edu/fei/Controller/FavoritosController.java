@@ -6,8 +6,12 @@ package br.edu.fei.Controller;
 
 import br.edu.fei.Model.Dao.Conexao;
 import br.edu.fei.Model.Dao.FavoritoDAO;
+import br.edu.fei.Model.Dao.ListaReproducaoDAO;
+import br.edu.fei.Model.ListaReproducao;
 import br.edu.fei.Model.Sessao;
 import br.edu.fei.View.TelaFavoritos;
+import br.edu.fei.View.TelaListaReproducao;
+import br.edu.fei.View.TelaPrincipal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -85,5 +89,64 @@ public class FavoritosController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void voltarTelaPrincipal() {
+
+        TelaPrincipal tela = new TelaPrincipal();
+
+        TelaPrincipalController controller = new TelaPrincipalController(tela);
+
+        tela.setController(controller);
+
+        tela.setVisible(true);
+
+        view.dispose();
+    }
+    
+    public void adicionarListaReproducao() {
+
+        int linhaSelecionada = view.getTabelaFavoritos().getSelectedRow();
+
+        if(linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(null,"Selecione um filme!");
+            return;
+        }
+
+        int idFilme = (int)view.getTabelaFavoritos().getValueAt(linhaSelecionada,0);
+
+        int idUsuario = Sessao.getIdUsuario();
+
+        try {
+
+            Conexao conexao = new Conexao();
+
+            ListaReproducaoDAO dao = new ListaReproducaoDAO(conexao.getConnection());
+
+            if(dao.verificarFilmeLista(idUsuario,idFilme)) {
+                JOptionPane.showMessageDialog(null,"Esse filme já está na lista!");
+                return;
+            }
+
+            ListaReproducao lista = new ListaReproducao(idUsuario,idFilme);
+
+            dao.adicionarFilme(lista);
+
+            JOptionPane.showMessageDialog(null,"Filme adicionado à lista!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void abrirListaReproducao() {
+
+        TelaListaReproducao tela = new TelaListaReproducao();
+
+        ListaReproducaoController controller = new ListaReproducaoController(tela);
+
+        tela.setController(controller);
+
+        tela.setVisible(true);
+
+        view.dispose();
     }
 }

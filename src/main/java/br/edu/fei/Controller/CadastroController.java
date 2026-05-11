@@ -74,4 +74,9 @@ public class CadastroController {
         e.printStackTrace();
     }
 }
+    public void voltarLogin() {
+
+        view.setVisible(false);
+        loginView.setVisible(true);
+    }
 }

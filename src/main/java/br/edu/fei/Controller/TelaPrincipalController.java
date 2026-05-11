@@ -51,6 +51,7 @@ public class TelaPrincipalController {
                 tabela.addRow(linha);
             }
             view.getTabelaFilmes().getColumnModel().getColumn(1).setPreferredWidth(220);
+            view.getTabelaFilmes().getColumnModel().getColumn(2).setPreferredWidth(120);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -322,5 +323,7 @@ public class TelaPrincipalController {
         tela.setController(controller);
 
         tela.setVisible(true);
+
+        view.dispose();
 }
 }
