@@ -48,4 +48,39 @@ public class FavoritoDAO {
 
         return rs.next();
     }
+    public ResultSet listarFavoritos(int idUsuario) throws SQLException {
+
+        String sql =
+            """
+            SELECT filmes.*
+            FROM favoritos
+            INNER JOIN filmes
+            ON favoritos.id_filme =
+               filmes.id_filme
+            WHERE favoritos.id_usuario = ?
+            """;
+
+        PreparedStatement statement = conn.prepareStatement(sql);
+
+        statement.setInt(1, idUsuario);
+
+        return statement.executeQuery();
+    }
+    public void removerFavorito(int idUsuario,int idFilme) throws SQLException {
+
+        String sql =
+            """
+            DELETE FROM favoritos
+            WHERE id_usuario = ?
+            AND id_filme = ?
+            """;
+
+        PreparedStatement statement = conn.prepareStatement(sql);
+
+        statement.setInt(1, idUsuario);
+
+        statement.setInt(2, idFilme);
+
+        statement.execute();
+    }
 }

@@ -11,6 +11,7 @@ import br.edu.fei.Model.Dao.FavoritoDAO;
 import br.edu.fei.Model.Dao.FilmeDAO;
 import br.edu.fei.Model.Favorito;
 import br.edu.fei.Model.Sessao;
+import br.edu.fei.View.TelaFavoritos;
 import br.edu.fei.View.TelaPrincipal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -312,4 +313,14 @@ public class TelaPrincipalController {
             e.printStackTrace();
         }
     }
+    public void abrirFavoritos() {
+
+        TelaFavoritos tela = new TelaFavoritos();
+
+        FavoritosController controller = new FavoritosController(tela);
+
+        tela.setController(controller);
+
+        tela.setVisible(true);
+}
 }
