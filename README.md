@@ -1,108 +1,357 @@
-# ProjetoFeiTv
-# 🎬 FEItv - Plataforma de Informações de Vídeos
+# 🎬 FEItv - Catálogo Studio Ghibli
 
-## 📌 Descrição do Projeto
-
-O **FEItv** é um sistema desenvolvido com o objetivo de gerenciar e disponibilizar informações sobre vídeos, como filmes e séries. A proposta é simular a lógica de plataformas de streaming (como Netflix e YouTube), porém **sem a reprodução de vídeos**, focando exclusivamente na organização, busca e interação com conteúdos.
+Sistema desktop desenvolvido em Java com arquitetura MVC e integração com PostgreSQL para gerenciamento de filmes do Studio Ghibli.
 
 ---
 
-## 🎯 Objetivo
+# 📌 Sobre o Projeto
 
-Construir uma aplicação que permita aos usuários:
+O FEItv é uma aplicação desktop desenvolvida em Java Swing com persistência em PostgreSQL, focada no gerenciamento e visualização de filmes do Studio Ghibli.
 
-* Buscar informações sobre vídeos
-* Interagir com conteúdos (curtir/descurtir)
-* Organizar vídeos em listas de favoritos personalizadas
+O sistema permite:
 
----
-
-## 🚀 Funcionalidades
-
-### 👤 Usuário
-
-* Cadastro de novos usuários
-* Login no sistema
-
-### 🔍 Vídeos
-
-* Buscar vídeos pelo nome
-* Listar informações detalhadas dos vídeos
-
-### 👍 Interações
-
-* Curtir vídeos
-* Descurtir vídeos
-
-### ⭐ Favoritos (Playlists)
-
-* Criar listas de vídeos favoritos
-* Editar listas de favoritos
-* Excluir listas de favoritos
-* Adicionar vídeos às listas
-* Remover vídeos das listas
+- 👤 Cadastro e login de usuários
+- 🔍 Busca de filmes
+- 📖 Exibição detalhada de informações
+- 👍 Curtir e 👎 descurtir filmes
+- ⭐ Gerenciamento de favoritos
+- 🎞️ Lista de reprodução personalizada
+- 🗄️ Persistência completa em banco de dados PostgreSQL
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+# 🛠️ Tecnologias Utilizadas
 
-*(ajuste conforme seu projeto)*
-
-* Java
-* PostgreSQL
-* JDBC
-* pgAdmin
-  
----
-
-## 🧠 Modelagem do Sistema
-
-O sistema é baseado em:
-
-* Entidade **Usuário**
-* Entidade **Vídeo**
-* Relacionamento de **Curtidas**
-* Sistema de **Listas de Favoritos (Playlists)**
+- Java
+- Java Swing
+- PostgreSQL
+- JDBC
+- MVC (Model View Controller)
+- NetBeans IDE
 
 ---
 
-## 🗄️ Banco de Dados (Exemplo)
+# 🚀 Funcionalidades
 
-Tabela de usuários:
+## 👤 Cadastro de Usuário
+
+- Cadastro de novos usuários
+- Validação de campos
+- CPF formatado
+- Persistência no banco de dados
+
+---
+
+## 🔐 Login de Usuário
+
+- Autenticação via PostgreSQL
+- Controle de sessão do usuário logado
+
+---
+
+## 🎬 Catálogo de Filmes
+
+- Busca de filmes por nome
+- JTable dinâmica
+- Exibição de informações detalhadas:
+  - Título
+  - Categoria
+  - Duração
+  - Diretor
+  - Ano
+  - Data de lançamento
+  - Descrição
+  - URL
+
+---
+
+## 👍 Sistema de Avaliação
+
+- Curtir filmes
+- Descurtir filmes
+- Controle de avaliação única por usuário
+- Alternância automática entre LIKE e DESLIKE
+
+---
+
+## ⭐ Favoritos
+
+- Adicionar filme aos favoritos
+- Remover favoritos
+- Controle de duplicidade
+- Favoritos separados por usuário
+
+---
+
+## 🎞️ Lista de Reprodução
+
+- Adicionar filmes favoritos à lista de reprodução
+- Remover filmes da lista
+- Visualização personalizada da lista
+
+---
+
+# 🧱 Estrutura do Projeto
+
+```text
+src/
+│
+├── Controller/
+│   ├── CadastroController
+│   ├── LoginController
+│   ├── TelaPrincipalController
+│   ├── FavoritosController
+│   └── ListaReproducaoController
+│
+├── Model/
+│   ├── Usuario
+│   ├── Filmes
+│   ├── Favorito
+│   ├── AvaliacaoFilme
+│   ├── ListaReproducao
+│   └── Sessao
+│
+├── Model/Dao/
+│   ├── Conexao
+│   ├── UsuarioDAO
+│   ├── FilmeDAO
+│   ├── FavoritoDAO
+│   ├── AvaliacaoFilmeDAO
+│   └── ListaReproducaoDAO
+│
+└── View/
+    ├── Login
+    ├── Cadastro
+    ├── TelaPrincipal
+    ├── TelaFavoritos
+    └── TelaListaReproducao
+```
+
+---
+
+# 🗄️ Banco de Dados
+
+## 📋 Tabela `usuarios`
 
 ```sql
 CREATE TABLE usuarios (
+
     id_usuario SERIAL PRIMARY KEY,
+
     nome VARCHAR(100) NOT NULL,
-    cpf VARCHAR(14) UNIQUE NOT NULL,
-    usuario VARCHAR(50) UNIQUE NOT NULL,
-    senha VARCHAR(255) NOT NULL,
+
+    email VARCHAR(100) NOT NULL,
+
+    cpf VARCHAR(14) NOT NULL,
+
+    senha VARCHAR(100) NOT NULL
 );
 ```
----
-
-## ▶️ Como Executar
-
-1. Criar o banco de dados no PostgreSQL
-2. Executar o script SQL
-3. Configurar conexão no projeto Java
-4. Executar a aplicação
 
 ---
 
-## 📌 Observações
+## 🎬 Tabela `filmes`
 
-* O sistema **não reproduz vídeos**, apenas gerencia informações
-* Senhas devem ser armazenadas com segurança (hash)
-* O projeto tem foco acadêmico e aprendizado de conceitos como:
+```sql
+CREATE TABLE filmes (
 
-  * Modelagem de banco de dados
-  * CRUD
-  * Relacionamentos
-  * Arquitetura em camadas (DAO, Model, Controller)
+    id_filme SERIAL PRIMARY KEY,
+
+    titulo VARCHAR(200) NOT NULL,
+
+    categoria VARCHAR(100) NOT NULL,
+
+    duracao VARCHAR(20) NOT NULL,
+
+    likes INT DEFAULT 0,
+
+    deslikes INT DEFAULT 0,
+
+    url VARCHAR(255),
+
+    descricao TEXT,
+
+    diretor VARCHAR(100),
+
+    ano INT,
+
+    data_lancamento DATE
+);
+```
 
 ---
 
-## 👨‍💻 Autor
+## ⭐ Tabela `favoritos`
 
-Projeto desenvolvido para fins acadêmicos.
+```sql
+CREATE TABLE favoritos (
+
+    id_favorito SERIAL PRIMARY KEY,
+
+    id_usuario INT NOT NULL,
+
+    id_filme INT NOT NULL,
+
+    UNIQUE (id_usuario, id_filme),
+
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id_usuario),
+
+    FOREIGN KEY (id_filme)
+        REFERENCES filmes(id_filme)
+);
+```
+
+---
+
+## 👍 Tabela `avaliacao_filme`
+
+```sql
+CREATE TABLE avaliacao_filme (
+
+    id_avaliacao SERIAL PRIMARY KEY,
+
+    id_usuario INT NOT NULL,
+
+    id_filme INT NOT NULL,
+
+    tipo VARCHAR(10) NOT NULL,
+
+    UNIQUE (id_usuario, id_filme),
+
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id_usuario),
+
+    FOREIGN KEY (id_filme)
+        REFERENCES filmes(id_filme)
+);
+```
+
+---
+
+## 🎞️ Tabela `lista_reproducao`
+
+```sql
+CREATE TABLE lista_reproducao (
+
+    id_lista SERIAL PRIMARY KEY,
+
+    id_usuario INT NOT NULL,
+
+    id_filme INT NOT NULL,
+
+    UNIQUE (id_usuario, id_filme),
+
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id_usuario),
+
+    FOREIGN KEY (id_filme)
+        REFERENCES filmes(id_filme)
+);
+```
+
+---
+
+# 🎥 Filmes Populados no Banco
+
+O sistema possui inserts automáticos contendo os principais filmes do Studio Ghibli:
+
+- Meu Amigo Totoro
+- A Viagem de Chihiro
+- O Castelo Animado
+- Princesa Mononoke
+- Ponyo
+- O Serviço de Entregas da Kiki
+- O Castelo no Céu
+- Túmulo dos Vagalumes
+- O Reino dos Gatos
+- O Menino e a Garça
+- Entre outros...
+
+---
+
+# 📌 Regras de Negócio
+
+## ⭐ Favoritos
+
+- Um usuário não pode favoritar o mesmo filme duas vezes
+
+---
+
+## 👍 Likes e 👎 Deslikes
+
+- Um usuário pode:
+  - Curtir
+  - Descurtir
+  - Remover avaliação
+
+- Não é possível:
+  - Curtir múltiplas vezes
+  - Curtir e descurtir simultaneamente
+
+---
+
+## 🎞️ Lista de Reprodução
+
+- Apenas filmes favoritados podem ser adicionados
+- Não é possível duplicar filmes na lista
+
+---
+
+# ▶️ Como Executar
+
+## 1️⃣ Clonar o repositório
+
+```bash
+git clone URL_DO_REPOSITORIO
+```
+
+---
+
+## 2️⃣ Criar banco PostgreSQL
+
+Criar um banco chamado:
+
+```text
+usuario
+```
+
+---
+
+## 3️⃣ Executar scripts SQL
+
+Executar:
+- criação das tabelas
+- constraints
+- inserts dos filmes
+
+---
+
+## 4️⃣ Configurar conexão
+
+Editar a classe:
+
+```text
+Conexao.java
+```
+
+com:
+- usuário PostgreSQL
+- senha
+- porta
+
+---
+
+## 5️⃣ Executar o projeto
+
+Executar:
+
+```text
+ProjetoFeiTv.java
+```
+
+---
+
+# 👨‍💻 Autor
+Luciano Ventura Monegatto
+Projeto desenvolvido para fins acadêmicos utilizando Java Swing, PostgreSQL e arquitetura MVC.
