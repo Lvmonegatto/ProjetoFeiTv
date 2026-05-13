@@ -36,7 +36,7 @@ public class FavoritoDAO {
 }
      public boolean verificarFavorito(int idUsuario,int idFilme) throws SQLException {
 
-        String sql = "SELECT *FROM favoritos WHERE id_usuario = ?AND id_filme = ?";
+        String sql = "SELECT *FROM favoritos WHERE id_usuario = ? AND id_filme = ?";
 
         PreparedStatement statement = conn.prepareStatement(sql);
 

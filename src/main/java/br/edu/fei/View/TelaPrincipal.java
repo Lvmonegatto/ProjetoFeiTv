@@ -51,7 +51,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        Imagem = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -109,7 +109,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel4.setText("Imagem");
+        Imagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Título:");
@@ -166,45 +166,44 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TituloValor))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DiretorValor))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(AnoValor))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DuracaoValor))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DataValor))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel19))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(CategoriaValor)))))
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TituloValor))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(201, 201, 201)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DiretorValor))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AnoValor))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DuracaoValor))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DataValor))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CategoriaValor))
+                    .addComponent(jLabel11)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(Imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -212,9 +211,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel12)
-                .addGap(67, 67, 67)
-                .addComponent(jLabel4)
-                .addGap(114, 114, 114)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(TituloValor))
@@ -242,10 +241,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel19)
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel11))
+                        .addGap(76, 76, 76))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jButton5.setText("Meus Favoritos");
@@ -255,25 +255,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 112, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(188, 188, 188)
+                                .addGap(76, 76, 76)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(366, 366, 366)
+                                .addGap(254, 254, 254)
                                 .addComponent(jLabel2))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(263, 263, 263)
+                                .addGap(151, 151, 151)
                                 .addComponent(jLabel3))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(210, 210, 210)
+                                .addGap(98, 98, 98)
                                 .addComponent(jButton2)
                                 .addGap(103, 103, 103)
                                 .addComponent(jButton3)
@@ -281,14 +282,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jButton4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 111, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addGap(299, 299, 299)))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addGap(299, 299, 299)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -383,6 +381,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return AnoValor;
     }
 
+    public JLabel getImagem() {
+        return Imagem;
+    }
+
     public JLabel getCategoriaValor() {
         return CategoriaValor;
     }
@@ -461,6 +463,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel DataValor;
     private javax.swing.JLabel DiretorValor;
     private javax.swing.JLabel DuracaoValor;
+    private javax.swing.JLabel Imagem;
     private javax.swing.JTable TabelaFilmes;
     private javax.swing.JTextField TfBuscar;
     private javax.swing.JLabel TituloValor;
@@ -476,7 +479,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

@@ -13,9 +13,12 @@ import br.edu.fei.Model.Favorito;
 import br.edu.fei.Model.Sessao;
 import br.edu.fei.View.TelaFavoritos;
 import br.edu.fei.View.TelaPrincipal;
+import java.awt.Image;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -259,7 +262,19 @@ public class TelaPrincipalController {
             ResultSet rs = dao.buscarDetalhesFilme(idFilme);
 
             if(rs.next()) {
+                String nomeImagem = rs.getString("imagem");
 
+                URL caminhoImagem =getClass().getResource("/imagens/" + nomeImagem);
+
+                if(caminhoImagem != null) {
+
+                ImageIcon icon = new ImageIcon(caminhoImagem);
+
+                Image imagem =icon.getImage().getScaledInstance(160,220,Image.SCALE_SMOOTH);
+
+                view.getImagem().setIcon(new ImageIcon(imagem));
+                }
+                
                 view.getTituloValor().setText(rs.getString("titulo"));
 
                 view.getCategoriaValor().setText(rs.getString("categoria"));
