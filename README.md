@@ -4,6 +4,20 @@ Sistema desktop desenvolvido em Java com arquitetura MVC e integração com Post
 
 ---
 
+# 🖼️ Diagrama de Classes do Sistema
+
+<img width="1612" height="975" alt="image" src="https://github.com/user-attachments/assets/a0e5e8f8-cebb-43f5-bf50-e8ce1be3aed6" />
+
+A interface principal do sistema permite:
+- busca de filmes
+- visualização de informações detalhadas
+- sistema de curtidas/descurtidas
+- gerenciamento de favoritos
+- exibição de capas dos filmes
+- acesso à lista de reprodução personalizada
+
+---
+
 # 📌 Sobre o Projeto
 
 O FEItv é uma aplicação desktop desenvolvida em Java Swing com persistência em PostgreSQL, focada no gerenciamento e visualização de filmes do Studio Ghibli.
@@ -62,6 +76,7 @@ O sistema permite:
   - Data de lançamento
   - Descrição
   - URL
+  - Imagem do filme
 
 ---
 
@@ -120,11 +135,14 @@ src/
 │   └── ListaReproducaoDAO
 │
 └── View/
-    ├── Login
-    ├── Cadastro
-    ├── TelaPrincipal
-    ├── TelaFavoritos
-    └── TelaListaReproducao
+│   ├── Login
+│   ├── Cadastro
+│   ├── TelaPrincipal
+│   ├── TelaFavoritos
+│   └── TelaListaReproducao
+│
+└── Main/
+│    └── ProjetoFeiTv
 ```
 
 ---
@@ -140,9 +158,9 @@ CREATE TABLE usuarios (
 
     nome VARCHAR(100) NOT NULL,
 
-    email VARCHAR(100) NOT NULL,
-
     cpf VARCHAR(14) NOT NULL,
+
+    usuario VARCHAR(50) NOT NULL,
 
     senha VARCHAR(100) NOT NULL
 );
@@ -175,7 +193,9 @@ CREATE TABLE filmes (
 
     ano INT,
 
-    data_lancamento DATE
+    data_lancamento DATE,
+
+    imagem VARCHAR(255)
 );
 ```
 
@@ -353,5 +373,7 @@ ProjetoFeiTv.java
 ---
 
 # 👨‍💻 Autor
+
 Luciano Ventura Monegatto
+
 Projeto desenvolvido para fins acadêmicos utilizando Java Swing, PostgreSQL e arquitetura MVC.
