@@ -6,7 +6,7 @@ Sistema desktop desenvolvido em Java com arquitetura MVC e integração com Post
 
 # 🖼️ Diagrama de Classes do Sistema
 
-<img width="1612" height="975" alt="image" src="https://github.com/user-attachments/assets/a0e5e8f8-cebb-43f5-bf50-e8ce1be3aed6" />
+<img width="1617" height="972" alt="image" src="https://github.com/user-attachments/assets/763fc3e8-3661-4713-9229-78ac30c30037" />
 
 A interface principal do sistema permite:
 - busca de filmes
