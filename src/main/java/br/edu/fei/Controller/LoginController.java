@@ -22,7 +22,12 @@ public class LoginController {
 
     private Login view;
     private Cadastro cadastroView;
-
+    
+    /**
+     * Construtor da classe LoginController 
+     * @param view LoginView da qual este controller gerencia
+     * @param cadastroView 
+     */
     public LoginController(Login view, Cadastro cadastroView) {
         this.view = view;
         this.cadastroView = cadastroView;
@@ -33,7 +38,7 @@ public class LoginController {
         view.setVisible(false);
         cadastroView.setVisible(true);
     }
-
+    
     public void login() {
 
         String usuario = view.getTfUsuario().getText();
