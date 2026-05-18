@@ -22,17 +22,32 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author lucia
- */
+    /**
+    ** Controller responsável por gerenciar as funcionalidades
+    * da tela principal do sistema GhibliFlix.
+    * Esta classe controla:
+    * - listagem e busca de filmes
+    * - curtidas e descurtidas
+    * - favoritos
+    * - carregamento dos detalhes dos filmes
+    * - navegação para a tela de favoritos
+    * @author lucia
+    */
 public class TelaPrincipalController {
     private TelaPrincipal view;
-
+    
+    /**
+    * Construtor da classe TelaPrincipalController.
+    * @param view TelaPrincipal que será controlada.
+    */
     public TelaPrincipalController(TelaPrincipal view) {
         this.view = view;
     }
 
+    /**
+    * Lista todos os filmes cadastrados no banco de dados
+    * e preenche a JTable da tela principal.
+    */
     public void listarFilmes() {
         
         try {
@@ -59,6 +74,10 @@ public class TelaPrincipalController {
             e.printStackTrace();
         }
     }
+    /**
+    * Busca filmes pelo nome digitado no campo de pesquisa
+    * e atualiza a tabela com os resultados encontrados.
+    */
     public void buscarFilme() {
 
         String nome = view.getTfBuscar().getText();
@@ -101,7 +120,13 @@ public class TelaPrincipalController {
                 e.printStackTrace();
             }
     }
-    
+    /**
+    * Realiza a curtida de um filme selecionado. 
+    * O usuário pode:
+    * - curtir um filme
+    * - remover a curtida
+    * - trocar um deslike por like
+     */
     public void curtirFilme() {
 
         int linhaSelecionada = view.getTabelaFilmes().getSelectedRow();
@@ -151,6 +176,11 @@ public class TelaPrincipalController {
             e.printStackTrace();
         }
     }
+    /**
+    * Atualiza a quantidade de likes e deslikes
+    * dos filmes com base nas avaliações registradas
+    * no banco de dados.
+    */
     public void atualizarLikesDeslikes() {
 
         try {
@@ -180,19 +210,29 @@ public class TelaPrincipalController {
                 )
                 """;
 
-        PreparedStatement statementLikes = conexao.getConnection().prepareStatement(sqlLikes);
+        PreparedStatement statementLikes = conexao.getConnection()
+                .prepareStatement(sqlLikes);
 
-        PreparedStatement statementDeslikes = conexao.getConnection().prepareStatement(sqlDeslikes);
+        PreparedStatement statementDeslikes = conexao.getConnection()
+                .prepareStatement(sqlDeslikes);
 
         statementLikes.execute();
 
         statementDeslikes.execute();
 
-    } catch (SQLException e) {
-
+        } catch (SQLException e) {
         e.printStackTrace();
+        }
     }
-}
+    
+    /**
+    * Realiza a descurtida de um filme selecionado.
+    * 
+    * O usuário pode:
+    * - descurtir um filme
+    * - remover o deslike
+     * - trocar um like por deslike
+    */
     public void descurtirFilme() {
 
         int linhaSelecionada = view.getTabelaFilmes().getSelectedRow();
@@ -210,12 +250,14 @@ public class TelaPrincipalController {
 
             Conexao conexao = new Conexao();
 
-            AvaliacaoFilmeDAO dao = new AvaliacaoFilmeDAO(conexao.getConnection());
+            AvaliacaoFilmeDAO dao = 
+                    new AvaliacaoFilmeDAO(conexao.getConnection());
 
             String avaliacaoAtual = dao.verificarAvaliacao(idUsuario,idFilme);
 
             if(avaliacaoAtual == null) {
-                AvaliacaoFilme avaliacao = new AvaliacaoFilme(idUsuario,idFilme,"DESLIKE");
+                AvaliacaoFilme avaliacao = 
+                        new AvaliacaoFilme(idUsuario,idFilme,"DESLIKE");
 
                 dao.adicionarAvaliacao(avaliacao);
 
@@ -228,7 +270,8 @@ public class TelaPrincipalController {
                 JOptionPane.showMessageDialog(null,"Descurtida removida!");
             }
             else if(avaliacaoAtual.equals("LIKE")) {
-                AvaliacaoFilme avaliacao = new AvaliacaoFilme(idUsuario,idFilme,"DESLIKE");
+                AvaliacaoFilme avaliacao = 
+                        new AvaliacaoFilme(idUsuario,idFilme,"DESLIKE");
                 dao.atualizarAvaliacao(avaliacao);
 
                 JOptionPane.showMessageDialog(null,"Filme descurtido!");
@@ -241,6 +284,19 @@ public class TelaPrincipalController {
         }
     }
     
+    /**
+    * Carrega e exibe os detalhes completos do filme
+    * selecionado na tabela. 
+    * São exibidos:
+    * - imagem
+    * - título
+    * - categoria
+    * - diretor
+    * - ano
+    * - duração
+    * - data de lançamento
+    * - descrição
+    */
     public void carregarDetalhesFilme() {
 
         int linhaSelecionada = view.getTabelaFilmes().getSelectedRow();
@@ -295,22 +351,27 @@ public class TelaPrincipalController {
             e.printStackTrace();
         }
     }
-        public void favoritarFilme() {
+    /**
+    * Adiciona um filme à lista de favoritos
+    * do usuário logado.
+     * O sistema impede duplicidade de favoritos.
+    */
+    public void favoritarFilme() {
 
-            int linhaSelecionada = view.getTabelaFilmes().getSelectedRow();
+        int linhaSelecionada = view.getTabelaFilmes().getSelectedRow();
 
-            if(linhaSelecionada == -1) {
+        if(linhaSelecionada == -1) {
 
-                JOptionPane.showMessageDialog(null,"Selecione um filme!");
+            JOptionPane.showMessageDialog(null,"Selecione um filme!");
 
             return;
-            }
+        }
 
-            int idFilme = (int)view.getTabelaFilmes().getValueAt(linhaSelecionada,0);
+        int idFilme = (int)view.getTabelaFilmes().getValueAt(linhaSelecionada,0);
 
-            int idUsuario = Sessao.getIdUsuario();
+        int idUsuario = Sessao.getIdUsuario();
 
-            Favorito favorito = new Favorito(idUsuario,idFilme);
+        Favorito favorito = new Favorito(idUsuario,idFilme);
 
         try {
             Conexao conexao = new Conexao();
@@ -329,6 +390,10 @@ public class TelaPrincipalController {
             e.printStackTrace();
         }
     }
+    /**
+    * Abre a tela de favoritos do usuário
+    * e fecha a tela principal.
+    */
     public void abrirFavoritos() {
 
         TelaFavoritos tela = new TelaFavoritos();
@@ -340,5 +405,5 @@ public class TelaPrincipalController {
         tela.setVisible(true);
 
         view.dispose();
-}
+    }
 }

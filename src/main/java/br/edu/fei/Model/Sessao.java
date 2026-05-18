@@ -5,7 +5,8 @@
 package br.edu.fei.Model;
 
 /**
- *
+ * Classe responsável por armazenar
+ * os dados da sessão do usuário logado.
  * @author lucia
  */
 public class Sessao {
@@ -14,7 +15,10 @@ public class Sessao {
     public static int getIdUsuario() {
         return idUsuario;
     }
-
+    /**
+     * Define o ID do usuário atualmente logado.
+     * @param idUsuario 
+     */
     public static void setIdUsuario(
             int idUsuario
     ) {

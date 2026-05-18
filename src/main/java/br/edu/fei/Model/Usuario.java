@@ -5,7 +5,8 @@
 package br.edu.fei.Model;
 
 /**
- *
+ * Classe responsável por representar
+ * os usuários cadastrados no sistema.
  * @author lucia
  */
 public class Usuario {
@@ -13,7 +14,13 @@ public class Usuario {
     private String cpf;
     private String usuario;
     private String senha;
-
+    /**
+     * Construtor da classe Usuario.
+     * @param nome
+     * @param cpf
+     * @param usuario
+     * @param senha 
+     */
     public Usuario(String nome, String cpf, String usuario, String senha) {
         this.nome = nome;
         this.cpf = cpf;

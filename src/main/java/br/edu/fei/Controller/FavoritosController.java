@@ -18,16 +18,32 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Controller responsável por gerenciar
+ * os filmes favoritos do usuário.
+ * 
+ * Esta classe controla:
+ * - listagem dos favoritos
+ * - remoção de favoritos
+ * - adição de filmes na lista de reprodução
+ * - navegação entre telas
  * @author lucia
  */
 public class FavoritosController {
     private TelaFavoritos view;
 
+    /**
+    * Construtor da classe FavoritosController.
+    * 
+    * @param view Tela de favoritos controlada pelo controller.
+    */
     public FavoritosController(TelaFavoritos view) {
         this.view = view;
     }
-
+    /**
+    * Lista todos os filmes favoritados
+    * pelo usuário logado e preenche
+    * a JTable da tela de favoritos.
+    */
     public void listarFavoritos() {
 
         try {
@@ -63,6 +79,11 @@ public class FavoritosController {
             e.printStackTrace();
         }
     }
+    /**
+    * Remove um filme selecionado
+    * da lista de favoritos do usuário.
+    * Após a remoção, a tabela é atualizada.
+    */
     public void removerFavorito() {
 
         int linhaSelecionada =view.getTabelaFavoritos().getSelectedRow();
@@ -90,6 +111,10 @@ public class FavoritosController {
             e.printStackTrace();
         }
     }
+    /**
+    * Retorna para a tela principal
+    * do sistema e fecha a tela de favoritos.
+    */
     public void voltarTelaPrincipal() {
 
         TelaPrincipal tela = new TelaPrincipal();
@@ -102,7 +127,12 @@ public class FavoritosController {
 
         view.dispose();
     }
-    
+    /**
+    * Adiciona um filme favorito
+    * à lista de reprodução do usuário.
+    * O sistema impede duplicidade
+    * de filmes na lista.
+    */
     public void adicionarListaReproducao() {
 
         int linhaSelecionada = view.getTabelaFavoritos().getSelectedRow();
@@ -137,6 +167,10 @@ public class FavoritosController {
             e.printStackTrace();
         }
     }
+    /**
+     * Abre a tela da lista de reprodução
+    * do usuário e fecha a tela de favoritos.
+    */
     public void abrirListaReproducao() {
 
         TelaListaReproducao tela = new TelaListaReproducao();

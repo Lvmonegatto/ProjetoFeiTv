@@ -11,17 +11,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
+ * Classe responsável pelas operações de acesso à tabela usuarios.
  * @author lucia
  */
 public class UsuarioDAO {
     private Connection conn;
-    
+    /**
+     * Construtor da classe UsuarioDAO.
+     * @param conn 
+     */
     public UsuarioDAO(Connection conn){
         this.conn = conn;
     }
-
-   public void inserir(Usuario usuario) throws SQLException {
+    /**
+     * Insere um novo usuário no banco de dados.
+     * @param usuario
+     * @throws SQLException 
+     */
+    public void inserir(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuarios(nome, cpf, usuario, senha) VALUES (?, ?, ?, ?)";
 
         PreparedStatement statement = conn.prepareStatement(sql);
@@ -35,13 +42,19 @@ public class UsuarioDAO {
         System.out.println("Informacao inserida com sucesso!");
 
         conn.close(); 
-}
-   public ResultSet consultar(Usuario usuario) throws SQLException {
+    }
+    /**
+     * Consulta um usuário no banco para realizar autenticação de login.
+     * @param usuario
+     * @return
+     * @throws SQLException 
+     */
+    public ResultSet consultar(Usuario usuario) throws SQLException {
         String sql = "SELECT * FROM usuarios WHERE usuario = ? AND senha = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, usuario.getUsuario());
         statement.setString(2, usuario.getSenha());
 
         return statement.executeQuery(); 
-}
+    }
 }

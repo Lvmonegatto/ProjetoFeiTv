@@ -15,7 +15,13 @@ import br.edu.fei.View.TelaPrincipal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
- *
+ * Controller responsável por gerenciar
+ * o sistema de login do GhibliFlix.
+ * Esta classe controla:
+ * - autenticação de usuários
+ * - abertura da tela de cadastro
+ * - inicialização da sessão do usuário
+ * - abertura da tela principal do sistema
  * @author lucia
  */
 public class LoginController {
@@ -24,21 +30,33 @@ public class LoginController {
     private Cadastro cadastroView;
     
     /**
-     * Construtor da classe LoginController 
-     * @param view LoginView da qual este controller gerencia
-     * @param cadastroView 
-     */
+    * Construtor da classe LoginController.
+    * 
+    * @param view Tela de login gerenciada pelo controller.
+    * @param cadastroView Tela de cadastro utilizada para navegação.
+    */
     public LoginController(Login view, Cadastro cadastroView) {
         this.view = view;
         this.cadastroView = cadastroView;
     }
-
+    
+    /**
+    * Abre a tela de cadastro
+    * e oculta a tela de login.
+    */
     public void abrirCadastro() {
 
         view.setVisible(false);
         cadastroView.setVisible(true);
     }
-    
+    /**
+    * Realiza a autenticação do usuário no sistema.
+    * O método:
+    * - captura usuário e senha digitados
+    * - consulta o banco de dados
+    * - inicia a sessão do usuário logado
+    * - abre a tela principal do sistema
+    */
     public void login() {
 
         String usuario = view.getTfUsuario().getText();

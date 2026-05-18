@@ -11,16 +11,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
+ * Classe responsável pelas operações de acesso à tabela avaliacao_filme.
  * @author lucia
  */
 public class AvaliacaoFilmeDAO {
      private Connection conn;
-
+    /**
+     * Construtor da classe AvaliacaoFilmeDAO.
+     * @param conn 
+     */
     public AvaliacaoFilmeDAO(Connection conn) {
         this.conn = conn;
     }
-
+    /**
+     * Verifica se o usuário já realizou uma avaliação em determinado filme.
+     * @param idUsuario
+     * @param idFilme
+     * @return
+     * @throws SQLException 
+     */
     public String verificarAvaliacao(int idUsuario,int idFilme) throws SQLException {
         String sql = "SELECT tipo FROM avaliacao_filme WHERE id_usuario = ? AND id_filme = ?";
 
@@ -38,7 +47,11 @@ public class AvaliacaoFilmeDAO {
 
         return null;
     }
-
+    /**
+     * Adiciona uma nova avaliação de filme no banco de dados.
+     * @param avaliacao
+     * @throws SQLException 
+     */
     public void adicionarAvaliacao(AvaliacaoFilme avaliacao) throws SQLException {
         String sql = "INSERT INTO avaliacao_filme(id_usuario, id_filme, tipo)VALUES (?, ?, ?)";
 
@@ -52,7 +65,11 @@ public class AvaliacaoFilmeDAO {
 
         statement.execute();
     }
-
+    /**
+     * Atualiza a avaliação já existente de um usuário em um filme.
+     * @param avaliacao
+     * @throws SQLException 
+     */
     public void atualizarAvaliacao(AvaliacaoFilme avaliacao) throws SQLException {
         String sql = "UPDATE avaliacao_filme SET tipo = ? WHERE id_usuario = ? AND id_filme = ?";
 
@@ -66,7 +83,12 @@ public class AvaliacaoFilmeDAO {
 
         statement.execute();
     }
-
+    /**
+     * Remove a avaliação de um filme realizada pelo usuário.
+     * @param idUsuario
+     * @param idFilme
+     * @throws SQLException 
+     */
     public void removerAvaliacao(int idUsuario,int idFilme) throws SQLException {
         String sql = "DELETE FROM avaliacao_filme WHERE id_usuario = ? AND id_filme = ?";
 

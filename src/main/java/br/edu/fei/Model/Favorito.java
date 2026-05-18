@@ -5,7 +5,8 @@
 package br.edu.fei.Model;
 
 /**
- *
+ * Classe responsável por representar
+ * um filme favoritado pelo usuário.
  * @author lucia
  */
 public class Favorito {
@@ -14,7 +15,11 @@ public class Favorito {
     private int idUsuario;
 
     private int idFilme;
-
+    /**
+     * Construtor da classe Favorito.
+     * @param idUsuario
+     * @param idFilme 
+     */
     public Favorito(
             int idUsuario,
             int idFilme

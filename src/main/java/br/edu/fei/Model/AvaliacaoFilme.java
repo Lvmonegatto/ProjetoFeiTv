@@ -5,16 +5,27 @@
 package br.edu.fei.Model;
 
 /**
- *
- * @author lucia
- */
+* Classe responsável por representar
+* a avaliação de um filme no sistema.
+* 
+* A avaliação pode ser:
+* - LIKE
+* - DESLIKE
+* @author lucia
+*/
 public class AvaliacaoFilme {
     private int idUsuario;
 
     private int idFilme;
 
     private String tipo;
-
+    
+    /**
+     * Construtor da classe AvaliacaoFilme.
+     * @param idUsuario
+     * @param idFilme
+     * @param tipo 
+     */
     public AvaliacaoFilme(int idUsuario,int idFilme,String tipo) {
         this.idUsuario = idUsuario;
         this.idFilme = idFilme;

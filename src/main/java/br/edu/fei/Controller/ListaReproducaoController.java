@@ -15,16 +15,32 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Controller responsável por gerenciar
+ * a lista de reprodução do usuário.
+ * 
+ * Esta classe controla:
+ * - listagem dos filmes da lista
+ * - remoção de filmes da lista
+ * - navegação entre telas
  * @author lucia
  */
 public class ListaReproducaoController {
      private TelaListaReproducao view;
-
+     
+    /**
+     * Construtor da classe ListaReproducaoController.
+    * 
+    * @param view Tela da lista de reprodução controlada.
+     */
     public ListaReproducaoController(TelaListaReproducao view) {
         this.view = view;
     }
 
+    /**
+    * Lista todos os filmes adicionados
+    * à lista de reprodução do usuário logado
+    * e preenche a JTable da tela.
+    */
     public void listarFilmesLista() {
 
         try {
@@ -59,6 +75,10 @@ public class ListaReproducaoController {
             e.printStackTrace();
         }
     }
+    /**
+    * Retorna para a tela de favoritos
+    * e fecha a tela atual da lista de reprodução.
+    */
     public void voltarFavoritos() {
 
         TelaFavoritos tela = new TelaFavoritos();
@@ -71,6 +91,12 @@ public class ListaReproducaoController {
 
         view.dispose();
     }
+    /**
+    * Remove um filme selecionado
+    * da lista de reprodução do usuário.
+    * 
+    * Após a remoção, a tabela é atualizada.
+    */
     public void removerDaLista() {
 
         int linhaSelecionada = view.getTabelaLista().getSelectedRow();

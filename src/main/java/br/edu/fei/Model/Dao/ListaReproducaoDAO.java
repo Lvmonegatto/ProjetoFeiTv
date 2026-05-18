@@ -11,16 +11,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
+ * Classe responsável pelas operações de acesso à tabela lista_reproducao.
  * @author lucia
  */
 public class ListaReproducaoDAO {
      private Connection conn;
-
+     
+     /**
+      * Construtor da classe ListaReproducaoDAO.
+      * @param conn 
+      */
     public ListaReproducaoDAO(Connection conn) {
         this.conn = conn;
     }
-
+    /**
+     * Adiciona um filme à lista de reprodução do usuário.
+     * @param lista
+     * @throws SQLException 
+     */
     public void adicionarFilme(ListaReproducao lista) throws SQLException {
         String sql =
                 """
@@ -37,7 +45,13 @@ public class ListaReproducaoDAO {
 
         statement.execute();
     }
-
+    /**
+     * Verifica se um filme já existe na lista de reprodução do usuário.
+     * @param idUsuario
+     * @param idFilme
+     * @return
+     * @throws SQLException 
+     */
     public boolean verificarFilmeLista(int idUsuario,int idFilme) throws SQLException {
 
         String sql =
@@ -58,6 +72,12 @@ public class ListaReproducaoDAO {
 
         return rs.next();
     }
+    /**
+     * Lista todos os filmes da lista de reprodução do usuário logado.
+     * @param idUsuario
+     * @return
+     * @throws SQLException 
+     */
     public ResultSet listarLista(int idUsuario) throws SQLException {
 
         String sql =
@@ -76,6 +96,12 @@ public class ListaReproducaoDAO {
 
         return statement.executeQuery();
     }
+    /**
+     *  Remove um filme da lista de reprodução do usuário.
+     * @param idUsuario
+     * @param idFilme
+     * @throws SQLException 
+     */
     public void removerFilmeLista(int idUsuario,int idFilme) throws SQLException {
 
         String sql =

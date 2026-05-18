@@ -7,7 +7,11 @@ package br.edu.fei.Model;
 import java.sql.Date;
 
 /**
- *
+ * Classe responsável por representar
+ * os filmes cadastrados no sistema.
+ * 
+ * Contém todas as informações
+ * detalhadas dos filmes do catálogo.
  * @author lucia
  */
 public class Filmes {
@@ -34,6 +38,55 @@ public class Filmes {
     private Date dataLancamento;
     
     private String imagem;
+    /**
+     * Construtor completo da classe Filmes.
+     * @param idFilme
+     * @param titulo
+     * @param categoria
+     * @param duracao
+     * @param likes
+     * @param deslikes
+     * @param url
+     * @param descricao
+     * @param diretor
+     * @param ano
+     * @param dataLancamento
+     * @param imagem 
+     */
+     public Filmes(int idFilme, String titulo, String categoria, String duracao, int likes, int deslikes, String url, String descricao, String diretor, int ano, Date dataLancamento, String imagem) {
+        this.idFilme = idFilme;
+        this.titulo = titulo;
+        this.categoria = categoria;
+        this.duracao = duracao;
+        this.likes = likes;
+        this.deslikes = deslikes;
+        this.url = url;
+        this.descricao = descricao;
+        this.diretor = diretor;
+        this.ano = ano;
+        this.dataLancamento = dataLancamento;
+        this.imagem = imagem;
+    }
+     /**
+      * Construtor simplificado da classe Filmes.
+      * @param idFilme
+      * @param titulo
+      * @param categoria
+      * @param duracao
+      * @param likes
+      * @param deslikes
+      * @param url 
+      */
+    public Filmes(int idFilme, String titulo, String categoria, String duracao, 
+            int likes, int deslikes, String url) {
+        this.idFilme = idFilme;
+        this.titulo = titulo;
+        this.categoria = categoria;
+        this.duracao = duracao;
+        this.likes = likes;
+        this.deslikes = deslikes;
+        this.url = url;
+    }
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
@@ -73,31 +126,6 @@ public class Filmes {
 
     public String getImagem() {
         return imagem;
-    }
-
-    public Filmes(int idFilme, String titulo, String categoria, String duracao, int likes, int deslikes, String url, String descricao, String diretor, int ano, Date dataLancamento, String imagem) {
-        this.idFilme = idFilme;
-        this.titulo = titulo;
-        this.categoria = categoria;
-        this.duracao = duracao;
-        this.likes = likes;
-        this.deslikes = deslikes;
-        this.url = url;
-        this.descricao = descricao;
-        this.diretor = diretor;
-        this.ano = ano;
-        this.dataLancamento = dataLancamento;
-        this.imagem = imagem;
-    }
-
-    public Filmes(int idFilme, String titulo, String categoria, String duracao, int likes, int deslikes, String url) {
-        this.idFilme = idFilme;
-        this.titulo = titulo;
-        this.categoria = categoria;
-        this.duracao = duracao;
-        this.likes = likes;
-        this.deslikes = deslikes;
-        this.url = url;
     }
 
     public int getIdFilme() {

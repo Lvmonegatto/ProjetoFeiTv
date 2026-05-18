@@ -12,11 +12,20 @@ import br.edu.fei.View.Login;
 import br.edu.fei.View.TelaPrincipal;
 
 /**
- *
+ * Classe principal responsável por inicializar o sistema FEItv.
+ * 
+ * Esta classe:
+ * - cria as telas do sistema
+ * - instancia os controllers
+ * - realiza a ligação entre View e Controller
+ * - inicia a aplicação pela tela de login
  * @author lucia
  */
 public class ProjetoFeiTv {
-
+    /**
+     * Método principal responsável por iniciar a execução do sistema.
+     * @param args 
+     */
     public static void main(String[] args) {
         Login login = new Login();
         Cadastro cadastro = new Cadastro();

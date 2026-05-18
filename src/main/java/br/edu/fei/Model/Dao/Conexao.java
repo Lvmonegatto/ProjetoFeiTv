@@ -10,10 +10,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
+ * Classe responsável por realizar
+ * a conexão do sistema com o banco
+ * de dados PostgreSQL.
  * @author lucia
  */
 public class Conexao {
+    /**
+     * Cria e retorna uma conexão ativa
+     * com o banco de dados.
+     * @return
+     * @throws SQLException 
+     */
     public Connection getConnection() throws SQLException{
         Dotenv dotenv = Dotenv.load();
         Connection conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/usuario", "postgres", dotenv.get("SENHA"));
